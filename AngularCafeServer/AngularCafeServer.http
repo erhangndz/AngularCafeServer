@@ -1,0 +1,6 @@
+@AngularCafeServer_HostAddress = http://localhost:5142
+
+GET {{AngularCafeServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
