@@ -24,6 +24,14 @@ namespace AngularCafeServer.Controllers
             return await _context.Menus.AsNoTracking().Include(x=>x.Category).ToListAsync();
         }
 
+
+        [HttpGet("latestFour")]
+        public async Task<IActionResult> GetLatestFour()
+        {
+            var values = await _context.Menus.Include(x=>x.Category).OrderByDescending(x=>x.Id).Take(4).ToListAsync();
+            return Ok(values);
+        }
+
         // GET: api/Menus/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Menu>> GetMenu(int id)
